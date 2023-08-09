@@ -90,7 +90,7 @@ namespace MobilePhoneStore.Services
                 }
             }
 
-            return controllerBase.Ok(new { Status = "Success", Message = "Customer details update successfully" });
+            return controllerBase.Ok(new { Status = "Success", Message = "Customer details updated successfully" });
         }
 
         private bool CustomerExists(int id)
