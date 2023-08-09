@@ -49,5 +49,12 @@ namespace MobilePhoneStore.Controllers
         {
             return await _services.GetPurchaseDetailsByMobile(mobilePhoneId, this);
         }
+
+        [HttpDelete]
+        [Route("DeletePurchaseDetails")]
+        public async Task<IActionResult> DeletePurchaseDetails(int id)
+        {
+            return await _services.DeletePurchaseDetails(id, this);
+        }
     }
 }

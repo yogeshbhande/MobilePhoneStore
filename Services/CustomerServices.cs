@@ -97,5 +97,29 @@ namespace MobilePhoneStore.Services
         {
             return _context.Customers.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> DeleteCustomer(int id, ControllerBase controllerBase)
+        {
+            try
+            {
+                var customer = await _context.Customers.FindAsync(id);
+                if (customer == null)
+                {
+                    return controllerBase.NotFound(new { Status = "Error", Message = "customer Not Available" });
+                }
+
+                _context.Customers.Remove(customer);
+                await _context.SaveChangesAsync();
+
+                return controllerBase.Ok(new
+                {
+                    Message = "customer deleted Successfully."
+                });
+            }
+            catch (Exception ex)
+            {
+                return controllerBase.BadRequest(ex.Message);
+            }
+        }
     }
 }

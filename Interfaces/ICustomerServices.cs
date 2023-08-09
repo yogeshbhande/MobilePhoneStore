@@ -13,5 +13,7 @@ namespace MobilePhoneStore.Interfaces
 
         public Task<IActionResult> UpdateCustomerDetails(int id, Customer customer, ControllerBase controllerBase);
 
+        public Task<IActionResult> DeleteCustomer(int id, ControllerBase controllerBase);
+
     }
 }

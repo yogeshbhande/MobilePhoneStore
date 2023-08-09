@@ -15,5 +15,7 @@ namespace MobilePhoneStore.Interfaces
 
         public Task<ActionResult> GetPurchaseDetailsByMobile(int mobilePhoneId, ControllerBase controllerBase);
 
+        public Task<IActionResult> DeletePurchaseDetails(int id, ControllerBase controllerBase);
+
     }
 }

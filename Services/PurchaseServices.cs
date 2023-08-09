@@ -101,5 +101,29 @@ namespace MobilePhoneStore.Services
                 return controllerBase.BadRequest(new { status = "Error", message = ex.Message });
             }
         }
+
+        public async Task<IActionResult> DeletePurchaseDetails(int id, ControllerBase controllerBase)
+        {
+            try
+            {
+                var purchase = await _context.Purchases.FindAsync(id);
+                if (purchase == null)
+                {
+                    return controllerBase.NotFound(new { Status = "Error", Message = "Purchase Not Found" });
+                }
+
+                _context.Purchases.Remove(purchase);
+                await _context.SaveChangesAsync();
+
+                return controllerBase.Ok(new
+                {
+                    Message = "Purchase details deleted Successfully."
+                });
+            }
+            catch (Exception ex)
+            {
+                return controllerBase.BadRequest(ex.Message);
+            }
+        }
     }
 }
